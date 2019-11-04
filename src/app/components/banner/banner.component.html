@@ -1,7 +1,18 @@
 <div class="topnav">
     <div class="login-container">
-      <input type="text" placeholder="Username" name="username">
-      <input type="text" placeholder="Password" name="password">
-      <button type="submit">Login</button>
+      <form>
+        <div *ngIf="invalidInput">
+          Invalid Credentials
+        </div>
+      <input 
+        [(ngModel)]="inputUsername" placeholder="Username" name="username">
+      <input 
+        [(ngModel)]="inputPassword" type="text" placeholder="Password" name="password">
+      <button 
+        [disabled]="!(inputUsername && inputPassword)"
+        (click)="submit()"
+      >Login</button>
+      </form>
   </div>
+  <button type="submit">Logout</button>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-banner',
@@ -6,15 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./banner.component.css']
 })
 export class BannerComponent implements OnInit {
+  inputUsername = '';
+  inputPassword = '';
 
-  constructor() {
-    //var username= ((document.getElementById("username") as HTMLInputElement).value);
-    //var password= ((document.getElementById("password") as HTMLInputElement).value);
-       
-    //console.log("worked");
-   }
+  invalidInput = false;
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+  }
+
+  submit() {
+    const credentials = {
+      username: this.inputUsername,
+      password: this.inputPassword
+    };
+    this.loginService.loginHttp(credentials);
   }
 
 }
