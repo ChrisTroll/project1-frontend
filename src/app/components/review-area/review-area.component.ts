@@ -8,12 +8,6 @@ import { TicketUpdateRequest } from '../models/TicketUpdateRequest';
 })
 export class ReviewAreaComponent implements OnInit {
 
-  TUR: TicketUpdateRequest = {
-  ticketid: 4,
-  userid: 2,
-	ticketstatus: 2
-  }
-
   constructor() { }
 
   ngOnInit() {

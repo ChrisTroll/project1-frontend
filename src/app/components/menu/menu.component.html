@@ -1,8 +1,14 @@
 <div class="menu">
     <div class="login-container">
-        <button type="submit">Make Ticket</button>
-        <button (click) = "getPastTickets()" type="submit">View Past Tickets</button>    
-        <button type="submit">Approve/Deny Tickets</button>
+        <button 
+            (click) = "showTicketSubmit()" type="submit"
+        >Make Ticket</button>
+        <button 
+            (click) = "showPastView()" type="submit"
+        >View Past Tickets</button> 
+        <button 
+            *ngIf="isManager" (click)="showReviewView()" type="submit"
+        >Approve/Deny Tickets</button>
         <hr>
     </div>
 </div>
