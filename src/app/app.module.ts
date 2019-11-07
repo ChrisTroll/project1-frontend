@@ -11,6 +11,9 @@ import { TicketsubmitComponent } from './components/ticketsubmit/ticketsubmit.co
 import { LoginService } from './services/login/login.service';
 import { TicketSubmitterService } from './services/ticket-submitter/ticket-submitter.service';
 import { TicketService } from './services/ticket/ticket.service';
+import { ReviewAreaComponent } from './components/review-area/review-area.component';
+import { PastTicketViewComponent } from './components/past-ticket-view/past-ticket-view.component';
+import { ViewService } from './services/view/view.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +21,16 @@ import { TicketService } from './services/ticket/ticket.service';
     BannerComponent,
     MenuComponent,
     TicketareaComponent,
-    TicketsubmitComponent
+    TicketsubmitComponent,
+    ReviewAreaComponent,
+    PastTicketViewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService, TicketSubmitterService, TicketService],
+  providers: [LoginService, TicketSubmitterService, TicketService, ViewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

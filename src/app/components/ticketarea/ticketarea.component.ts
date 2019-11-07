@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ViewService } from 'src/app/services/view/view.service';
 
 @Component({
   selector: 'app-ticketarea',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketareaComponent implements OnInit {
 
-  constructor() { }
+  private view = 0;
+  private viewSub: Subscription;
+
+  constructor(private viewServ: ViewService) { }
 
   ngOnInit() {
+    this.viewSub = this.viewServ.$view.subscribe(data => {
+      this.view = data
+    })
   }
 
 }

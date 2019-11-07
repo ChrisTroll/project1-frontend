@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
+import { Subscription } from 'rxjs';
+import { ViewService } from 'src/app/services/view/view.service';
 
 @Component({
   selector: 'app-banner',
@@ -10,19 +12,32 @@ export class BannerComponent implements OnInit {
   inputUsername = '';
   inputPassword = '';
 
-  invalidInput = false;
+  loginUser = '';
+  isLoggedIn = false;
 
-  constructor(private loginService: LoginService) { }
+  loginSub: Subscription;
 
-  ngOnInit() {
-  }
-
+  constructor(private loginServ: LoginService, private viewServ: ViewService) { }
+  
   submit() {
     const credentials = {
       username: this.inputUsername,
       password: this.inputPassword
     };
-    this.loginService.loginHttp(credentials);
+    this.loginServ.loginHttp(credentials);
   }
+  logout(){
+    this.loginServ.logout();
+    this.isLoggedIn = false;
+    this.viewServ.setView(0);
+  }
+  ngOnInit() {
+    this.loginSub = this.loginServ.$userObs.subscribe(data => { 
+      this.loginUser = data.username;
+      this.isLoggedIn = true;
+      this.viewServ.setView(0);
+    })
+  }
+
 
 }

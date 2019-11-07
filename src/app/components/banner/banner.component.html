@@ -12,7 +12,13 @@
         [disabled]="!(inputUsername && inputPassword)"
         (click)="submit()"
       >Login</button>
-      <button type="submit" name="logout">Logout</button>
+      <button 
+        type="submit" name="logout"
+        (click)="logout()"
+      >Logout</button>
+      <div *ngIf="isLoggedIn">
+          You are logged in as: {{loginUser}}
+      </div>
       </form> 
   </div>
 

@@ -13,7 +13,7 @@ export class TicketService {
   constructor(private httpClient: HttpClient) { }
 
   private Tickets: Subject<Ticket[]> = new Subject();
-  public $TicketObs: Observable<Ticket[]> = this.Tickets.asObservable();
+  public $TicketsObs: Observable<Ticket[]> = this.Tickets.asObservable();
 
   getPastTickets(userin: User){
     const url = 'http://localhost:8080/Project1/pastview/';
