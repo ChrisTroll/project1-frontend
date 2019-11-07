@@ -8,25 +8,30 @@ import { Subject, Observable } from 'rxjs';
 })
 export class LoginService {
 
-  currentlyLoggedIn = false;
+  nullUser: User = {
+    username: null,
+    password: null,
+    userrole: null,
+    userid: null
+  }
 
-  public user: User;
+  private user: Subject<User> = new Subject();
+  public $userObs: Observable<User> = this.user.asObservable();
 
   //add a router here
   constructor(private httpClient: HttpClient) { }
 
-  loginHttp(credentials: {username: string, password: string}) {
+  loginHttp(credentials: {username: string, password: string}){
     const loginCredentials = {
       username: credentials.username,
       password: credentials.password
     };
     const url = 'http://localhost:8080/Project1/login/';
     this.httpClient.post(url, loginCredentials).subscribe((data: User) => {
-          this.user = data;
-          //testing output
-          console.log('This is the stored User:' + JSON.stringify(this.user));
-        });
-    
-        
+      this.user.next(data);
+    });
+  }
+  logout(){
+    this.user.next(this.nullUser);
   }
 }
