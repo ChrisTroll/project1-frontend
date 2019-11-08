@@ -4,8 +4,8 @@ Your Resolved Tickets:
     <div>
     Ticket ID: {{ticket.id}} <br>
     Amount: ${{ticket.amount}} <br>
-    Date Submitted: {{ticket.datesubmitted}}<br>
-    Date Resolved: {{ticket.dateresolved}}<br>
+    Date Submitted: {{ticket.datesubmitted?.toLocaleDateString()}}<br>
+    Date Resolved: {{ticket.dateresolved?.toLocaleDateString()}}<br>
     Description: {{ticket.description}} <br>
     Resolver ID: {{ticket.resolver}} <br>
     <div *ngIf="ticket.status==='Approved'" class ="Approved">Status: {{ticket.status}}<br></div>

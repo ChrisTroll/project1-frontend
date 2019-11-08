@@ -5,6 +5,8 @@ import { TicketService } from 'src/app/services/ticket/ticket.service';
 import { Subscription } from 'rxjs';
 import { Ticket } from '../models/Ticket';
 
+
+
 @Component({
   selector: 'app-review-area',
   templateUrl: './review-area.component.html',
@@ -31,6 +33,9 @@ export class ReviewAreaComponent implements OnInit {
   ngOnInit() {
     this.ticketsub = this.tServ.$TicketsObs.subscribe(data => {
       this.tickets = data;
+      for(let ticket of this.tickets){
+        ticket.datesubmitted = new Date(ticket.datesubmitted);
+      }
     })
   }
 
@@ -50,6 +55,7 @@ export class ReviewAreaComponent implements OnInit {
 
   refresh(){
     this.tServ.getReviewable(this.user);
+    this.hasSubmitted = false;
   }
 
   ngOnDestroy(){

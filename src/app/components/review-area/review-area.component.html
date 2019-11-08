@@ -4,7 +4,7 @@
     <tr *ngFor = "let ticket of tickets">
         Ticket ID: {{ticket.id}} <br>
         Amount: ${{ticket.amount}} <br>
-        Date Submitted: {{ticket.datesubmitted}}<br>
+        Date Submitted: {{ticket.datesubmitted?.toLocaleDateString()}}<br>
         Description: {{ticket.description}} <br>
         Reimbursement Type: {{ticket.type | reimb}}
         <button *ngIf="!hasSubmitted" (click)="update(ticket.id, true)" type="submit">Approve</button>
