@@ -14,6 +14,7 @@ import { TicketService } from './services/ticket/ticket.service';
 import { ReviewAreaComponent } from './components/review-area/review-area.component';
 import { PastTicketViewComponent } from './components/past-ticket-view/past-ticket-view.component';
 import { ViewService } from './services/view/view.service';
+import { ReimbPipe } from './components/pipes/reimb.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ViewService } from './services/view/view.service';
     TicketareaComponent,
     TicketsubmitComponent,
     ReviewAreaComponent,
-    PastTicketViewComponent
+    PastTicketViewComponent,
+    ReimbPipe
   ],
   imports: [
     BrowserModule,

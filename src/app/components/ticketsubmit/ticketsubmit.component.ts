@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Ticket } from 'src/app/components/models/Ticket';
 import { User } from 'src/app/components/models/User';
 import { TicketSubmitterService } from 'src/app/services/ticket-submitter/ticket-submitter.service';
-import { TicketService } from 'src/app/services/ticket/ticket.service';
 
 @Component({
   selector: 'app-ticketsubmit',
@@ -10,15 +9,10 @@ import { TicketService } from 'src/app/services/ticket/ticket.service';
   styleUrls: ['./ticketsubmit.component.css']
 })
 export class TicketsubmitComponent implements OnInit {
+  @Input()
+  user: User;
 
   ticket: Ticket;
-  user: User = {
-    username: 'BananaBatman',
-    password: 'batman',
-    userrole: 1,
-    userid: 1
-  }
-
   ticketstr: string;
 
   constructor(private tserv: TicketSubmitterService) { }
@@ -35,7 +29,7 @@ export class TicketsubmitComponent implements OnInit {
       resolver: null,
       status: 1,
       type: null
-    }
+    };
   }
 
   getTicketStr() {
@@ -44,13 +38,17 @@ export class TicketsubmitComponent implements OnInit {
 
   setupTicket(){
     this.ticket.author = this.user.userid;
+    this.ticket.datesubmitted = Math.floor(Date.now() / 1000);
   }
 
   submit() {
     this.setupTicket();
     this.getTicketStr;
-    console.log('Ticket :' + this.ticketstr);
+    console.log('Submitted Ticket:' + this.ticketstr);
     this.tserv.submitTicket(this.ticket);
+  }
+
+  ngOnDrestroy(){
   }
 
 }

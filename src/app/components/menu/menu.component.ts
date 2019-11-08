@@ -15,8 +15,9 @@ export class MenuComponent implements OnInit {
   private isManager = false;
   private user: User;
   private userSub: Subscription;
+  private isLoggedin = false;
 
-  constructor(private LogInServ: LoginService, private ticketServ: TicketService, private viewServ: ViewService) { 
+  constructor(private lServ: LoginService, private ticketServ: TicketService, private viewServ: ViewService) { 
   }
 
   showTicketSubmit(){
@@ -30,6 +31,7 @@ export class MenuComponent implements OnInit {
 
   showReviewView(){
     this.viewServ.setView(3);
+    this.ticketServ.getReviewable(this.user);
   }
 
   getManager(){
@@ -41,9 +43,14 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSub = this.LogInServ.$userObs.subscribe(data => {
+    this.userSub = this.lServ.$userObs.subscribe(data => {
       this.user = data
-      this.getManager();
+      this.getManager()
+      if(this.user.username != null){
+        this.isLoggedin = true;
+      } else {
+        this.isLoggedin = false;
+      }
       console.log(JSON.stringify(this.user))
     });
   }
