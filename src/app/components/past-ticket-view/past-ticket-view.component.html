@@ -1,13 +1,16 @@
 Your Resolved Tickets:
 <hr>
 <tr *ngFor = "let ticket of prettyTickets">
+    <div>
     Ticket ID: {{ticket.id}} <br>
     Amount: ${{ticket.amount}} <br>
     Date Submitted: {{ticket.datesubmitted}}<br>
     Date Resolved: {{ticket.dateresolved}}<br>
     Description: {{ticket.description}} <br>
     Resolver ID: {{ticket.resolver}} <br>
-    Status: {{ticket.status}} <br>
+    <div *ngIf="ticket.status==='Approved'" class ="Approved">Status: {{ticket.status}}<br></div>
+    <div *ngIf="ticket.status==='Denied'" class="Denied">Status: {{ticket.status}}<br></div>
     Reimbursement Type: {{ticket.type}}
+    </div>
     <hr>
 </tr>
