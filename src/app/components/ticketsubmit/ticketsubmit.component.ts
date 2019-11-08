@@ -38,7 +38,8 @@ export class TicketsubmitComponent implements OnInit {
 
   setupTicket(){
     this.ticket.author = this.user.userid;
-    this.ticket.datesubmitted = Math.floor(Date.now() / 1000);
+    var date = new Date();
+    this.ticket.datesubmitted = date;
   }
 
   submit() {
