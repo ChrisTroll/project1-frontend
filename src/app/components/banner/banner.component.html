@@ -7,7 +7,7 @@
       <input 
         [(ngModel)]="inputUsername" placeholder="Username" name="username">
       <input 
-        [(ngModel)]="inputPassword" type="text" placeholder="Password" name="password">
+        [(ngModel)]="inputPassword" type="password" placeholder="Password" name="password">
       <button 
         [disabled]="!(inputUsername && inputPassword)"
         (click)="submit()"

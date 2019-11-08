@@ -79,8 +79,8 @@ export class PastTicketViewComponent implements OnInit {
   mapTicket(ticketin: Ticket){
     this.prettyTicket.id = ticketin.id;
     this.prettyTicket.amount = ticketin.amount;
-    this.prettyTicket.datesubmitted = ticketin.datesubmitted;
-    this.prettyTicket.dateresolved = ticketin.dateresolved;
+    this.prettyTicket.datesubmitted = new Date(ticketin.datesubmitted);
+    this.prettyTicket.dateresolved = new Date(ticketin.dateresolved);
     this.prettyTicket.description = ticketin.description;
     this.prettyTicket.resolver = ticketin.resolver;
   }

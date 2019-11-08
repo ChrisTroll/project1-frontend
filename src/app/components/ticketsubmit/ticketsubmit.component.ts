@@ -29,7 +29,7 @@ export class TicketsubmitComponent implements OnInit {
       resolver: null,
       status: 1,
       type: null
-    };
+    }
   }
 
   getTicketStr() {
@@ -47,6 +47,8 @@ export class TicketsubmitComponent implements OnInit {
     this.getTicketStr;
     console.log('Submitted Ticket:' + this.ticketstr);
     this.tserv.submitTicket(this.ticket);
+    this.ticket.amount = 0;
+    this.ticket.description = "";
   }
 
   ngOnDrestroy(){

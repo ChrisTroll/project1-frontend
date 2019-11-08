@@ -3,8 +3,8 @@ Your Resolved Tickets:
 <tr *ngFor = "let ticket of prettyTickets">
     Ticket ID: {{ticket.id}} <br>
     Amount: ${{ticket.amount}} <br>
-    Date Submitted: {{ticket.datesubmitted}}<br>
-    Date Resolved: {{ticket.dateresolved}}<br>
+    Date Submitted: {{ticket.datesubmitted?.toLocaleDateString()}}<br>
+    Date Resolved: {{ticket.dateresolved?.toLocaleDateString()}}<br>
     Description: {{ticket.description}} <br>
     Resolver ID: {{ticket.resolver}} <br>
     Status: {{ticket.status}} <br>
