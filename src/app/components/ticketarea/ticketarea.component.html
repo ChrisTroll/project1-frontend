@@ -1,8 +1,5 @@
 <div class="menu">
-        <app-ticketsubmit *ngIf="view===1"></app-ticketsubmit>
-        <hr>
+        <app-ticketsubmit *ngIf="view===1" [user]="user"></app-ticketsubmit>
         <app-past-ticket-view *ngIf="view===2"></app-past-ticket-view>
-        <hr>
-        <app-review-area *ngIf="view===3"></app-review-area>
-
+        <app-review-area *ngIf="view===3" [user]="user"></app-review-area>
 </div>

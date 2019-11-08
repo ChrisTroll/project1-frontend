@@ -1,19 +1,13 @@
-<table>
-    Your Resolved Tickets:
+Your Resolved Tickets:
+<hr>
+<tr *ngFor = "let ticket of prettyTickets">
+    Ticket ID: {{ticket.id}} <br>
+    Amount: ${{ticket.amount}} <br>
+    Date Submitted: {{ticket.datesubmitted}}<br>
+    Date Resolved: {{ticket.dateresolved}}<br>
+    Description: {{ticket.description}} <br>
+    Resolver ID: {{ticket.resolver}} <br>
+    Status: {{ticket.status}} <br>
+    Reimbursement Type: {{ticket.type}}
     <hr>
-    <tr *ngFor = "let ticket of tickets">
-        <!--
-        <td>
-            <h1>{{ticket.description}}</h1>
-        </td>        
-        -->
-        Ticket ID: {{ticket.id}} <br>
-        Amount: ${{ticket.amount}} <br>
-        Date Submitted: <br>
-        Description: {{ticket.description}} <br>
-        Resolver: {{ticket.resolver}} <br>
-        Status: {{ticket.status}} <br>
-        Reimbursement Type: {{ticket.type}}
-        <hr>
-    </tr>
-</table>
+</tr>

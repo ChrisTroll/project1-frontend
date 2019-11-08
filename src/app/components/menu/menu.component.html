@@ -1,4 +1,4 @@
-<div class="menu">
+<div *ngIf="isLoggedin" class="menu">
     <div class="login-container">
         <button 
             (click) = "showTicketSubmit()" type="submit"

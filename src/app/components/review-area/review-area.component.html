@@ -1,5 +1,19 @@
 <div>
     Reviewable Tickets:
-    <br>
-    <button (click)="submit()" type="submit">Update Ticket</button>
+    <hr>
+    <tr *ngFor = "let ticket of tickets">
+        Ticket ID: {{ticket.id}} <br>
+        Amount: ${{ticket.amount}} <br>
+        Date Submitted: {{ticket.datesubmitted}}<br>
+        Description: {{ticket.description}} <br>
+        Reimbursement Type: {{ticket.type | reimb}}
+        <button *ngIf="!hasSubmitted" (click)="update(ticket.id, true)" type="submit">Approve</button>
+        <button *ngIf="!hasSubmitted" (click)="update(ticket.id, false)" type="submit">Deny</button>
+        <div *ngIf="hasSubmitted">
+            Thanks for your review! Click refresh to review again!
+            <button (click)="refresh()" type="submit">Refresh</button>
+        </div>
+        <hr>
+    </tr>
+    <div *ngIf="tickets.length === 0">No tickets to review, keep up the good work!</div>
 </div>
