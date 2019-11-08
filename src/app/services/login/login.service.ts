@@ -10,7 +10,6 @@ export class LoginService {
 
   nullUser: User = {
     username: null,
-    password: null,
     userrole: null,
     userid: null
   }
