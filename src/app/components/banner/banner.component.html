@@ -1,21 +1,27 @@
 <div class="topnav">
+    <h1>Project 1</h1>
+
     <div class="login-container">
       <form>
         <div *ngIf="invalidInput">
           Invalid Credentials
         </div>
-      <input 
-        [(ngModel)]="inputUsername" placeholder="Username" name="username">
-      <input 
-        [(ngModel)]="inputPassword" type="password" placeholder="Password" name="password">
-      <button 
-        [disabled]="!(inputUsername && inputPassword)"
-        (click)="submit()"
-      >Login</button>
-      <button 
-        type="submit" name="logout"
-        (click)="logout()"
-      >Logout</button>
+          <div class ="Inputfields">
+            <input 
+            [(ngModel)]="inputUsername" placeholder="Username" name="username"><br>
+            <input
+            [(ngModel)]="inputPassword" type="text" placeholder="Password" name="password">
+          </div>
+          <div class ="Buttonfields">
+            <button 
+            [disabled]="!(inputUsername && inputPassword)"
+            (click)="submit()"
+            >Login</button>
+            <button 
+            type="submit" name="logout"
+            (click)="logout()"
+            >Logout</button>
+          </div>
       <div *ngIf="isLoggedIn">
           You are logged in as: {{loginUser}}
       </div>
